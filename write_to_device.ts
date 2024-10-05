@@ -16,6 +16,7 @@ export class writeToDevice{
                 console.log('Error: ', err.message)
             })
     }
+    // From: https://github.com/ndsh/flipdigits
     // Header	command	Address	Data	End byte
     // 0x80	Description below	0x00 - 0xFF*	Description below	0x8F
     //// Command	Number of data bytes	Automatic refresh	Description

@@ -9,6 +9,7 @@ export class textTransforms{
         this.rawCharacterCodes = this.setRawCharacters(rawCharacterCodes);
         console.log(rawCharacterCodes);
     }
+    // character hex from https://github.com/owenmcateer/FlipDigits
     setRawCharacters(characters: rawCharacterCodes): rawCharacterCodes {
         characters["0"] = 0x7E;
         characters["1"] = 0x30;
