@@ -2,7 +2,7 @@
 #### Takes weather data and puts it on my 7x4 (Row x Column) AlfaZeta Mechanical Display
 #### Lang: TypeScript
 #### Device: Raspberry Pi 4 
-#### USB: USB to RS485 adapter 
+#### USB: USB to RS485 adapter | /dev/ttyS0 using the UART pins 
 #### Display V+: 24v
 
 To install dependencies:
@@ -37,3 +37,14 @@ Instagram: @motus_art
 
 Protocol info from  https://github.com/ndsh/flipdigits
 Instagram: @julian_hespenheide
+
+
+######
+https://jason19970210.medium.com/raspberry-pi-4-with-multiple-uart-interface-4eac75f74d7c
+
+| TXD    PIN  |  RXD      PIN  |  Communication Port
+uart0 :  GPIO 14    8  |  GPIO 15   10  |  /dev/ttyAMA0 
+uart1 :  GPIO 0    27  |  GPIO 1    28  |  /dev/ttyAMA1
+uart2 :  GPIO 4     7  |  GPIO 5    29  |  /dev/ttyAMA2
+uart3 :  GPIO 8    24  |  GPIO 9    21  |  /dev/ttyAMA3
+uart4 :  GPIO 12   32  |  GPIO 13   33  |  /dev/ttyAMA4
