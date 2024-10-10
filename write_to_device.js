@@ -1,4 +1,5 @@
-const { SerialPort } = require('serialport')
+import { SerialPort } from 'serialport';
+
 
 // Create a port
 export class writeToDevice{
@@ -6,7 +7,7 @@ export class writeToDevice{
     usbdevicePort = "";
     serialWritingPort; 
 
-    constructor(address: number, usbdevicePort: string, baudrate: number){
+    constructor(address, usbdevicePort, baudrate){
          console.log("HI");
           this.address = address;
         this.usbdevicePort = usbdevicePort;
@@ -29,33 +30,29 @@ export class writeToDevice{
     // 0x8C	1	-	Set address: 0x00 – 0xFE (0xFF broadcast)
     // 0xC0	0	-	Format 0x80, 0xC0, 0x8F – request for address, response – 0xAA, 0xCC, [address]
 
-    messageWrite(command: number, address: number, data: Array<number>): void{
-        this.serialWritingPort.write(0x80, function(err) {
+    messageWrite(command, address, data){
+      var buffer = new Buffer.alloc(32);
+      buffer[0] = 0x80;
+      buffer[1] = command;
+      buffer[2] = address;
+
+          for (let i =0; i<data.length;i++){
+            buffer[i+3] = data[i];
+          }
+          console.log(data)
+          console.log(data.length);
+
+          buffer[31] = 0x8F;
+          this.serialWritingPort.write(buffer, function(err) {
+
             if (err) {
               return console.log('Error on write: ', err.message)
             }
             console.log('message written')
           })
-          this.serialWritingPort.write(command, function(err) {
-            if (err) {
-              return console.log('Error on write: ', err.message)
-            }
-            console.log('message written')
-          })
-          for (let i = 0; i < data.length; i++) {
-            this.serialWritingPort.write(data[i], function(err) {
-                if (err) {
-                  return console.log('Error on write: ', err.message)
-                }
-                console.log('message written')
-              })
-        }
-        this.serialWritingPort.write(0x8F, function(err) {
-            if (err) {
-              return console.log('Error on write: ', err.message)
-            }
-            console.log('message written')
-          })
+          
+        
+            
           
     }
 

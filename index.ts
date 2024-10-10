@@ -2,10 +2,14 @@ import { textTransforms } from "./text_transforms.ts";
 import {weatherData} from "./weather_data.ts";
 import {writeToDevice} from "./write_to_device.ts";
 
+
+
 const myTransform = new textTransforms();
 const SyracuseLatitude = 43.0481;
 const SyracuseLongitude = -76.1474;
 const gettingWeather = new weatherData(SyracuseLatitude, SyracuseLongitude);
+
+const writer = new writeToDevice(0x00, "/dev/tty.usbserial-B001BJRJ", 57600 );
 
 
 let weatherDataVars: object = await gettingWeather.obtainWeatherData();

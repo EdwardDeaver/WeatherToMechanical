@@ -12,12 +12,12 @@ export class weatherData{
     };
     url = 'https://api.open-meteo.com/v1/forecast';
 
-    constructor(latitude: number, longitude: number ){
+    constructor(latitude, longitude ){
         this.params.latitude = [latitude]
         this.params.longitude = [longitude];
 
     }
-    async obtainWeatherData(): Promise<object>{
+    async obtainWeatherData(){
         let current; 
         try{
             const responses = await fetchWeatherApi(this.url, this.params);
@@ -36,14 +36,15 @@ export class weatherData{
         return {"current": current};
 
     }
-    getCurrentTemp(response: object){
-        return Math.round(response.current()!.variables(0)!.value());
+    getCurrentTemp(response){
+        console.log(response.current().variables(0).value());
+        return Math.round(response.current().variables(0).value());
     }
-    getLowTemp(response: object){
-        return Math.round(this.getMax(response.daily()!.variables(2)!.valuesArray()!));
+    getLowTemp(response){
+        return Math.round(this.getMax(response.daily().variables(2).valuesArray()));
     }
-    getHighTemp(response: object){
-        return Math.round(this.getMax(response.daily()!.variables(1)!.valuesArray()!));
+    getHighTemp(response){
+        return Math.round(this.getMax(response.daily().variables(1).valuesArray()));
     }
     
 
