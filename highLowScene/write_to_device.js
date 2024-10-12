@@ -1,4 +1,7 @@
 import { SerialPort } from 'serialport';
+import WebSocket from 'ws';
+import { textTransforms } from "./text_transforms.js"; 
+
 
 
 // Create a port
@@ -6,19 +9,34 @@ export class writeToDevice{
     address = 0;
     usbdevicePort = "";
     serialWritingPort; 
+    url = '';
 
-    constructor(address, usbdevicePort, baudrate){
+    websocketClient;
+    
+    constructor(url){
          console.log("HI");
-          this.address = address;
+          /*
+          if(usbdevicePort && baudrate){
         this.usbdevicePort = usbdevicePort;
+
         this.serialWritingPort = new SerialPort({
             path: usbdevicePort,
             baudRate: baudrate,
           })
+
           // Open errors will be emitted as an error event
             this.serialWritingPort.on('error', function(err) {
                 console.log('Error: ', err)
             })
+          }
+            */
+        if(url){
+          this.url = url;
+        }
+
+        if(url){
+         this.websocketClient =  new WebSocket(url);
+        }
     }
     // From: https://github.com/ndsh/flipdigits
     // Header	command	Address	Data	End byte
@@ -49,11 +67,23 @@ export class writeToDevice{
               return console.log('Error on write: ', err.message)
             }
             console.log('message written')
-          })
-          
-        
-            
-          
+          })   
+    }
+
+    networkWrite(command, address, data){
+ 
+      const myTransform = new textTransforms();
+      let header = [0x80,command, address]
+
+      var d = header.concat(data, [0x8f]);
+      console.log("HI")
+      console.log(d)
+      console.log(this.websocketClient);
+      console.log('test');
+      this.websocketClient.on('open', function open() {
+        websocketClient.send(d);
+      });
+       
     }
 
 

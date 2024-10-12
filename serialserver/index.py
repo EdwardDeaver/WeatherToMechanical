@@ -29,9 +29,8 @@ async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     while True:
         data = await websocket.receive_text()
-        data =  bytes(data, encoding="utf-8")
-        print(type( data.split(b',')))
-        data = data.split(b',')
+        print(data)
+        data = data.split(',')
         myWriter.writeToPort(message=data)
         await websocket.send_text(f"Message text was: {data}")
 

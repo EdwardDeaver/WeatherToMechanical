@@ -20,6 +20,9 @@
     "openmeteo": "^1.1.4",
     "serialport": "^12.0.0",
     "spacetime": "^7.6.1",
-    "suncalc-ts": "^2.0.1"
+    "suncalc-ts": "^2.0.1",
+    "websocket": "^1.0.35",
+    "ws": "^8.18.0",
+    "ws-reconnect": "^1.0.7"
   }
 }
