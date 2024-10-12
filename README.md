@@ -1,9 +1,34 @@
 # Weather To Mechanical
 #### Takes weather data and puts it on my 7x4 (Row x Column) AlfaZeta Mechanical Display
-#### Lang: TypeScript
+#### Lang: JavaScript and Python
 #### Device: Raspberry Pi 4 
 #### USB: USB to RS485 adapter | /dev/ttyS0 using the UART pins 
 #### Display V+: 24v
+
+
+Run serialserver:
+
+Created because you can't have multiple devices trying to open the port. 
+
+127.0.0.1:5000/ws 
+
+Send the array of byte values as string x,y,z
+
+* set the usb port and baud rate in the env
+
+the systemd file
+
+Run the highLowScene:
+
+* TODO create a websocket connection that will try to send values to the serialserver even if it fails, just send it. 
+* TODO make a bash file like the serialserver 
+* TODO make systemd file
+
+
+
+
+
+
 
 To install dependencies:
 
