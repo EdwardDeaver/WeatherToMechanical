@@ -475,6 +475,12 @@ wheels = [
 ]
 
 [[package]]
+name = "sdnotify"
+version = "0.3.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/d8/9fdc36b2a912bf78106de4b3f0de3891ff8f369e7a6f80be842b8b0b6bd5/sdnotify-0.3.2.tar.gz", hash = "sha256:73977fc746b36cc41184dd43c3fe81323e7b8b06c2bb0826c4f59a20c56bb9f1", size = 2459 }
+
+[[package]]
 name = "serialserver"
 version = "0.1.0"
 source = { virtual = "." }
@@ -482,6 +488,7 @@ dependencies = [
     { name = "fastapi", extra = ["standard"] },
     { name = "pyserial" },
     { name = "python-dotenv" },
+    { name = "sdnotify" },
     { name = "uvicorn" },
 ]
 
@@ -490,6 +497,7 @@ requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.0" },
     { name = "pyserial", specifier = ">=3.5" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
+    { name = "sdnotify", specifier = ">=0.3.2" },
     { name = "uvicorn", specifier = ">=0.31.1" },
 ]
 
