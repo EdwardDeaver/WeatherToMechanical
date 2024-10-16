@@ -9,9 +9,9 @@ cd $(dirname "$0")
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-source .venv/bin/activate  
+uv venv
 
-uv python install
+source .env/bin/activate
 
 uv pip install -r requirements.txt
 

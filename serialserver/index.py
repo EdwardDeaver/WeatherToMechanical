@@ -24,9 +24,9 @@ myWriter = serialWriter(config['USB_PORT'], config['BAUD_RATE'])
 
 app = FastAPI()
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    n.notify("READY=1")
+#@asynccontextmanager
+#async def lifespan(app: FastAPI):
+#  n.notify("READY=1")
 
 
 

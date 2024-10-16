@@ -39,14 +39,14 @@ async function main(connection){
      weatherString = "CUR__" + weatherDataVars["current"]+ "LO___" + weatherDataVars["low"] + "HI___" + weatherDataVars["high"];
      leftover = (31 - 3) - weatherString.length 
      full = weatherString.concat("_".repeat(leftover))
-
+/*
     console.log(full)
     console.log(full.length)
     console.log(weatherString);
     
     console.log((myTransform.transformStringToHexArray(full).toString()));
     console.log(weatherString);
-
+*/
     let header = [0x80, 0x83, 0x00]
     var data = header.concat(myTransform.transformStringToHexArray(full), [0x8F]);
 

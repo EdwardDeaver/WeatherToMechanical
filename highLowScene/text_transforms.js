@@ -51,9 +51,9 @@ export class textTransforms{
         return characters; 
       }
       returnHexOfSingle(mySingle){
-        console.log(typeof mySingle);
-        console.log(this.rawCharacterCodes[mySingle]);
-        console.log(this.rawCharacterCodes[""+mySingle+""])
+       // console.log(typeof mySingle);
+       // console.log(this.rawCharacterCodes[mySingle]);
+      //  console.log(this.rawCharacterCodes[""+mySingle+""])
 
         return this.rawCharacterCodes[mySingle]; 
       }
@@ -61,7 +61,7 @@ export class textTransforms{
         let temp = []
         longString = longString.toLowerCase();
         for (let i = 0; i < longString.length; i++) {
-            console.log(longString.charAt(i));
+           // console.log(longString.charAt(i));
             temp.push(this.returnHexOfSingle(longString.charAt(i)));
           } 
         return temp;

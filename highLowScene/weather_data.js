@@ -1,5 +1,4 @@
-import { fetchWeatherApi } from 'openmeteo';
-
+import axios, {isCancel, AxiosError} from 'axios';
 
 export class weatherData{
     params = {
@@ -11,7 +10,7 @@ export class weatherData{
         daily: 'weather_code,apparent_temperature_max,apparent_temperature_min'
     };
     url = 'https://api.open-meteo.com/v1/forecast';
-
+    lastMessage; 
     constructor(latitude, longitude ){
         this.params.latitude = [latitude]
         this.params.longitude = [longitude];
@@ -20,13 +19,26 @@ export class weatherData{
     async obtainWeatherData(){
         let current; 
         try{
-            const responses = await fetchWeatherApi(this.url, this.params);
-            let current = this.getCurrentTemp(responses[0]);
-            let low = this.getLowTemp(responses[0]);
-            let high = this.getHighTemp(responses[0]);
 
-            console.log(current);
-            console.log(typeof responses);
+            let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: 'https://api.open-meteo.com/v1/forecast?latitude=43.056910&longitude=-76.158030&current_weather=true&temperature_unit=fahrenheit&daily=weather_code,apparent_temperature_max,apparent_temperature_min,temperature_2m_min,temperature_2m_max&hourly=temperature_2m,precipitation_probability&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
+            headers: { }
+            };
+
+            const weatherData = await axios.request(config)
+            .then((response) => {
+                this.lastMessage = response.data;
+            return(response.data);
+            })
+            .catch((error) => {
+            console.log(error);
+            });
+            console.log(weatherData);
+            let current = this.getCurrentTemp(weatherData);
+            let low = this.getLowTemp(weatherData);
+            let high = this.getHighTemp(weatherData);
             return {"current": current, "low": low, "high": high};
         }
         catch(error){
@@ -37,14 +49,15 @@ export class weatherData{
 
     }
     getCurrentTemp(response){
-        console.log(response.current().variables(0).value());
-        return Math.round(response.current().variables(0).value());
+        //console.log(response.current().variables(0).value());
+        return Math.round(response["current_weather"].temperature);
     }
     getLowTemp(response){
-        return Math.round(this.getMax(response.daily().variables(2).valuesArray()));
+        return Math.round(response["daily"].temperature_2m_min);
     }
     getHighTemp(response){
-        return Math.round(this.getMax(response.daily().variables(1).valuesArray()));
+        
+        return Math.round(response["daily"].temperature_2m_max);
     }
     
 
