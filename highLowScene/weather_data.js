@@ -53,11 +53,12 @@ export class weatherData{
         return Math.round(response["current_weather"].temperature);
     }
     getLowTemp(response){
-        return Math.round(response["daily"].temperature_2m_min);
+        console.log(Math.round(response["daily"].temperature_2m_min[0]));
+        return Math.round(response["daily"].temperature_2m_min[0]);
     }
     getHighTemp(response){
-        
-        return Math.round(response["daily"].temperature_2m_max);
+        console.log(Math.round(response["daily"].temperature_2m_max[0]))
+        return Math.round(response["daily"].temperature_2m_max[0]);
     }
     
 
