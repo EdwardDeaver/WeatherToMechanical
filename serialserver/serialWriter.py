@@ -3,8 +3,7 @@ import serial.tools.list_ports
 class serialWriter:
     serialPort =''
     def __init__(self, USB_PORT: str, BAUD_RATE: int) -> None:
-        self.serialPort = serial.Serial(
-            port="/dev/tty.usbserial-B001BJRJ",
+        self.serialPort = serial.Serial(USB_PORT,
     baudrate=57600,
     timeout=1,
 	parity=serial.PARITY_NONE,
@@ -36,7 +35,7 @@ class serialWriter:
         self.serialPort.write(numberBytes)
 
 
-\
+
  
         
 

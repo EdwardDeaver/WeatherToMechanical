@@ -1,0 +1,12 @@
+[Unit]
+Description=My Serial Server
+After=network.target enable_ws_local.service
+
+[Service]
+WorkingDirectory=/home/renn/WeatherToMechanical/highLowScene/
+Type=idle
+User=renn
+ExecStart=/usr/bin/node index.js
+
+[Install]
+WantedBy=multi-user.target

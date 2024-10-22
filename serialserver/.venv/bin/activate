@@ -74,7 +74,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/Users/renn/Documents/GitHub/WeatherToMechanical/serialserver/.venv'
+VIRTUAL_ENV='/home/renn/WeatherToMechanical/serialserver/.venv'
 if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath &> /dev/null) ; then
     VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
 fi
@@ -85,9 +85,9 @@ PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH
 
 if [ "xserialserver" != x ] ; then
-    VIRTUAL_ENV_PROMPT="serialserver"
+    VIRTUAL_ENV_PROMPT="(serialserver) "
 else
-    VIRTUAL_ENV_PROMPT=$(basename "$VIRTUAL_ENV")
+    VIRTUAL_ENV_PROMPT="($(basename "$VIRTUAL_ENV")) "
 fi
 export VIRTUAL_ENV_PROMPT
 
@@ -99,7 +99,7 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1-}"
-    PS1="(${VIRTUAL_ENV_PROMPT}) ${PS1-}"
+    PS1="${VIRTUAL_ENV_PROMPT}${PS1-}"
     export PS1
 fi
 

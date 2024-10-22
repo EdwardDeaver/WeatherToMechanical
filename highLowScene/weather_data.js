@@ -7,7 +7,8 @@ export class weatherData{
         temperature_unit: 'fahrenheit',
         current: 'temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
         hourly: 'temperature_2m,precipitation_probability',
-        daily: 'weather_code,apparent_temperature_max,apparent_temperature_min'
+        daily: 'weather_code,apparent_temperature_max,apparent_temperature_min',
+    	timezone: 'America/New_York'
     };
     url = 'https://api.open-meteo.com/v1/forecast';
     lastMessage; 
@@ -23,8 +24,8 @@ export class weatherData{
             let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: 'https://api.open-meteo.com/v1/forecast?latitude=43.056910&longitude=-76.158030&current_weather=true&temperature_unit=fahrenheit&daily=weather_code,apparent_temperature_max,apparent_temperature_min,temperature_2m_min,temperature_2m_max&hourly=temperature_2m,precipitation_probability&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
-            headers: { }
+            url: 'https://api.open-meteo.com/v1/forecast?timezone=America%2FNew_York&latitude=43.056910&longitude=-76.158030&current_weather=true&temperature_unit=fahrenheit&daily=weather_code,apparent_temperature_max,apparent_temperature_min,temperature_2m_min,temperature_2m_max&hourly=temperature_2m,precipitation_probability&current=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m',
+            headers: { },
             };
 
             const weatherData = await axios.request(config)

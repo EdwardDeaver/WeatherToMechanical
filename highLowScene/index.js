@@ -91,6 +91,7 @@ function sleep(ms) {
 
 
 var clientWeb = new client();
+await sleep(60000*1);
 
 clientWeb.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
