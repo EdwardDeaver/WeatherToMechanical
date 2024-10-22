@@ -53,7 +53,7 @@ export-env {
       }
     }
 
-    let virtual_env = '/Users/renn/Documents/GitHub/WeatherToMechanical/serialserver/.venv'
+    let virtual_env = '/home/renn/WeatherToMechanical/serialserver/.venv'
     let bin = 'bin'
 
     let is_windows = ($nu.os-info.family) == 'windows'

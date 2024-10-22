@@ -1,3 +1,7 @@
+
+echo "The script you are running has:"
+
+
 #!/usr/bin/env bash
 
 echo "The script you are running has:"
@@ -5,14 +9,13 @@ echo "basename: [$(basename "$0")]"
 echo "dirname : [$(dirname "$0")]"
 echo "pwd     : [$(pwd)]"
 
-cd $(dirname "$0")
+MYPWD=${pwd} 
 
-curl -LsSf https://astral.sh/uv/install.sh | sh
 
-uv venv
+echo $pwd
 
-source .env/bin/activate
+source .venv/bin/activate
 
-uv pip install -r requirements.txt
+~/.cargo/bin/uv pip install -r requirements.txt
 
-uv run index.py
+~/.cargo/bin/uv run index.py

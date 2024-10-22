@@ -79,7 +79,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV '/Users/renn/Documents/GitHub/WeatherToMechanical/serialserver/.venv'
+set -gx VIRTUAL_ENV '/home/renn/WeatherToMechanical/serialserver/.venv'
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (echo $FISH_VERSION | head -c 1) -lt 3

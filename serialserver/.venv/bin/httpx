@@ -1,4 +1,4 @@
-#!/Users/renn/Documents/GitHub/WeatherToMechanical/serialserver/.venv/bin/python3
+#!/home/renn/WeatherToMechanical/serialserver/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
