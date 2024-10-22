@@ -16,42 +16,30 @@ Send the array of byte values as string x,y,z
 
 * set the usb port and baud rate in the env
 
-the systemd file
-
-Run the highLowScene:
-
-* TODO create a websocket connection that will try to send values to the serialserver even if it fails, just send it. 
-* TODO make a bash file like the serialserver 
-* TODO make systemd file
 
 
+#### INSTALL 
 
+run https://docs.astral.sh/uv/getting-started/installation/
 
-
-
-
-To install dependencies:
-
-```bash
-bun install
+in the highlowscene run 
+```
+npm i
 ```
 
-To run:
+then: 
 
-```bash
-bun run index.ts
 ```
-Uses Open Meteo for weather data. 
-
-##### Want to change the location?
-just change the cords in the index file. 
+cd ..
 
 
-#### Want to make it run forever?
+cp SerialServer/enable_local_ws.service /etc/systemd/system/
+cp highLowScene/enable_high_low_scene.service /etc/systemd/system/
 
-use Systemd
-https://www.google.com/search?q=set+systemd+to+run+script+once+an+hour&sca_esv=ea1a1df108c957c8&ei=8o8BZ7reAdWsiLMP_Obg2QY&ved=0ahUKEwi6n7u1-feIAxVVFmIAHXwzOGsQ4dUDCA8&uact=5&oq=set+systemd+to+run+script+once+an+hour&gs_lp=Egxnd3Mtd2l6LXNlcnAiJnNldCBzeXN0ZW1kIHRvIHJ1biBzY3JpcHQgb25jZSBhbiBob3VyMgUQIRigATIFECEYqwJIqCBQkAJYsh9wBngBkAEAmAHIA6AB5haqAQowLjE1LjEuMS4xuAEDyAEA-AEBmAIYoAKwF8ICChAAGLADGNYEGEfCAgUQIRifBZgDAIgGAZAGCJIHCjYuMTUuMS4xLjGgB_SOAQ&sclient=gws-wiz-serp
-https://unix.stackexchange.com/questions/704109/configure-systemd-timer-to-run-every-hour-after-first-run
+sudo systemctl enable enable_local_ws
+sudo systemctl enable enable_high_low_scene
+
+```
 
 
 
@@ -62,14 +50,3 @@ Instagram: @motus_art
 
 Protocol info from  https://github.com/ndsh/flipdigits
 Instagram: @julian_hespenheide
-
-
-######
-https://jason19970210.medium.com/raspberry-pi-4-with-multiple-uart-interface-4eac75f74d7c
-
-| TXD    PIN  |  RXD      PIN  |  Communication Port
-uart0 :  GPIO 14    8  |  GPIO 15   10  |  /dev/ttyAMA0 
-uart1 :  GPIO 0    27  |  GPIO 1    28  |  /dev/ttyAMA1
-uart2 :  GPIO 4     7  |  GPIO 5    29  |  /dev/ttyAMA2
-uart3 :  GPIO 8    24  |  GPIO 9    21  |  /dev/ttyAMA3
-uart4 :  GPIO 12   32  |  GPIO 13   33  |  /dev/ttyAMA4
