@@ -40,7 +40,8 @@ export class weatherData{
             let current = this.getCurrentTemp(weatherData);
             let low = this.getLowTemp(weatherData);
             let high = this.getHighTemp(weatherData);
-            return {"current": current, "low": low, "high": high};
+	    let currentDate = this.getTime(weatherData);
+            return {"current": current, "low": low, "high": high, "date": currentDate};
         }
         catch(error){
             console.log(error);
@@ -49,7 +50,16 @@ export class weatherData{
         return {"current": current};
 
     }
-    getCurrentTemp(response){
+    getTime(response){
+	const options = {
+  month: "short",
+  day: "numeric",
+};
+	let date = new Date(response["current_weather"]["time"])
+	let myDate = date.toLocaleString("en-US", options)
+    	return myDate;
+}
+	getCurrentTemp(response){
         //console.log(response.current().variables(0).value());
         return Math.round(response["current_weather"].temperature);
     }

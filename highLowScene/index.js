@@ -36,8 +36,43 @@ async function main(connection){
 
     
     let weatherDataVars = await gettingWeather.obtainWeatherData();
-     weatherString = "CUR__" + weatherDataVars["current"]+ "LO___" + weatherDataVars["low"] + "HI___" + weatherDataVars["high"];
-     leftover = (31 - 3) - weatherString.length 
+ 	  console.log(weatherDataVars["date"]);
+	  console.log(weatherDataVars["date"].length);
+	 
+
+
+	  let dateArray = weatherDataVars["date"].split(' ');
+	let characterCount = 0;
+	  for (const element of dateArray){
+		characterCount += element.length;
+	}
+
+    let myDateLen = 7- characterCount;
+console.log("date length");
+	  console.log(characterCount);
+
+	  let padding ="";
+
+	  if(myDateLen > 1){
+
+           padding = "_".repeat(myDateLen);
+	  }
+	  if(myDateLen == 1){
+		padding = "_";
+	}
+	  if(myDateLen == 0){
+		padding = "";
+	}
+
+	let dateString = dateArray[0]+padding+dateArray[1]; 
+     console.log(dateString);
+
+
+
+	  weatherString = dateString + "CUR__" + weatherDataVars["current"]+ "LO___" + weatherDataVars["low"] + "HI___" + weatherDataVars["high"];
+     leftover = (31 - 3) - weatherString.length
+	  console.log("leftover");
+	  console.log(leftover);
      full = weatherString.concat("_".repeat(leftover))
 /*
     console.log(full)
