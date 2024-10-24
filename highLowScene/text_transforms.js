@@ -4,7 +4,7 @@ export class textTransforms{
     constructor(){
         let rawCharacterCodes = {};
         this.rawCharacterCodes = this.setRawCharacters(rawCharacterCodes);
-        console.log(rawCharacterCodes);
+       // console.log(rawCharacterCodes);
     }
     // character hex from https://github.com/owenmcateer/FlipDigits
     setRawCharacters(characters) {
