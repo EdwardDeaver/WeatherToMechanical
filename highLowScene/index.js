@@ -33,55 +33,25 @@ async function main(connection){
 
   //  await sleep(4000)
 
+var date = new Date;
+
+var seconds = date.getSeconds();
+var minutes = date.getMinutes();
+var hour = date.getHours();
 
     
     let weatherDataVars = await gettingWeather.obtainWeatherData();
- 	  console.log(weatherDataVars["date"]);
-	  console.log(weatherDataVars["date"].length);
-	 
-
-
-	  let dateArray = weatherDataVars["date"].split(' ');
-	let characterCount = 0;
-	  for (const element of dateArray){
-		characterCount += element.length;
-	}
-
-    let myDateLen = 7- characterCount;
-console.log("date length");
-	  console.log(characterCount);
-
-	  let padding ="";
-
-	  if(myDateLen > 1){
-
-           padding = "_".repeat(myDateLen);
-	  }
-	  if(myDateLen == 1){
-		padding = "_";
-	}
-	  if(myDateLen == 0){
-		padding = "";
-	}
-
-	let dateString = dateArray[0]+padding+dateArray[1]; 
-     console.log(dateString);
-
-
-
-	  weatherString = dateString + "CUR__" + weatherDataVars["current"]+ "LO___" + weatherDataVars["low"] + "HI___" + weatherDataVars["high"];
-     leftover = (31 - 3) - weatherString.length
-	  console.log("leftover");
-	  console.log(leftover);
+     weatherString = "CUR__" + weatherDataVars["current"]+ "LO___" + weatherDataVars["low"] + "HI___" + weatherDataVars["high"] + hour + ":" + minutes ;
+     leftover = (31 - 3) - weatherString.length 
      full = weatherString.concat("_".repeat(leftover))
-/*
+
     console.log(full)
     console.log(full.length)
     console.log(weatherString);
     
     console.log((myTransform.transformStringToHexArray(full).toString()));
     console.log(weatherString);
-*/
+
     let header = [0x80, 0x83, 0x00]
     var data = header.concat(myTransform.transformStringToHexArray(full), [0x8F]);
 
@@ -100,7 +70,7 @@ console.log("date length");
     }
     array[31]=0x8F;
     connection.sendUTF(array);
-    await sleep(60000*10)
+    await sleep(60000 * 1)
   }
 
  //   writer.networkWrite(0x83,  0x00, myTransform.transformStringToHexArray(full) );
@@ -126,7 +96,6 @@ function sleep(ms) {
 
 
 var clientWeb = new client();
-await sleep(60000*1);
 
 clientWeb.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());

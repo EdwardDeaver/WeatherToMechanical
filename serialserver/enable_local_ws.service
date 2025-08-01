@@ -1,0 +1,12 @@
+[Unit]
+Description=My Serial Server
+After=network.target
+
+[Service]
+WorkingDirectory=/home/renn/WeatherToMechanical/serialserver/
+Type=idle
+User=renn
+ExecStart=/bin/bash start.sh
+
+[Install]
+WantedBy=multi-user.target

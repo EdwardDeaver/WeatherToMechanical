@@ -19,7 +19,7 @@
 @REM OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 @REM WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@for %%i in ("/home/renn/WeatherToMechanical/serialserver/.venv") do @set "VIRTUAL_ENV=%%~fi"
+@for %%i in ("/Users/renn/Documents/GitHub/WeatherToMechanical/serialserver/.venv") do @set "VIRTUAL_ENV=%%~fi"
 
 @set "VIRTUAL_ENV_PROMPT=serialserver"
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (
