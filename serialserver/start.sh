@@ -16,6 +16,6 @@ echo $pwd
 
 source .venv/bin/activate
 
-~/.cargo/bin/uv pip install -r requirements.txt
+~/.local/bin/uv pip install -r requirements.txt
 
-~/.cargo/bin/uv run index.py
+~/.local/bin/uv run index.py
