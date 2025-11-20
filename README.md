@@ -41,6 +41,18 @@ sudo systemctl enable enable_high_low_scene
 
 ```
 
+#### SERVER SETUP
+
+* GRAFANA - SO YOU CAN READ THE LOGS
+* TAILSCALE - so you can SSH INTO IT
+* GIT
+* Ubuntu - Server
+
+##### HARDWARE
+
+* Raspberry Pi 4
+
+
 
 
 ##### Credits
